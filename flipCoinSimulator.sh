@@ -37,8 +37,10 @@ done
 
 if [ $a -eq 1 ]
 then
-  echo "Winner Heads won by $A"
+  echo "Winner Heads Won by $A"
+  echo "Difference = $(($A-$B))"
 elif [ $b -eq 1 ]
 then
   echo "Winner Tails Won by $B"
+  echo "Difference = $(($B-$A))"
 fi
