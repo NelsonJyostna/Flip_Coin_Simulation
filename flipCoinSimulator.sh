@@ -1,28 +1,44 @@
 #!/bin/bash -x
 
-
 Heads=0
 Tails=1
 
-
-
-count=0
+count=1
 A=0
 B=0
-c=10
+c=50
+a=0
+b=0
 
-while [ $count ]
-   fliping_coin=$((RANDOM%2))
+while [ $count -le $c ]
 do
+   fliping_coin=$((RANDOM%2))
     if [ $fliping_coin -eq $Heads ]
      then
-         echo " Heads = $A "
-            ((A++))
-    elif [ $fliping_coin -eq $Tails ]
+           ((A++))
+         echo "Heads = $A "
+           if [ $A -eq 21 ]
+           then
+              a=1
+              break
+           fi
+     elif [ $fliping_coin -eq $Tails ]
      then
-         echo " Tails = $B "
-            ((B++))
+          ((B++))
+         echo "Tails = $B "
+          if [ $B -eq 21 ]
+          then
+            b=1
+            break
+          fi
     fi
-       ((count++))
+    ((count++))
 done
 
+if [ $a -eq 1 ]
+then
+  echo "Winner Heads won by $A"
+elif [ $b -eq 1 ]
+then
+  echo "Winner Tails Won by $B"
+fi
